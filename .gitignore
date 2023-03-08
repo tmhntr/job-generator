@@ -1,0 +1,7 @@
+output/
+data/
+.env.local
+.vscode/
+__pycache__/
+
+

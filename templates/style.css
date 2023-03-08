@@ -1,0 +1,326 @@
+/* inherited styles */
+/* Font Definitions */
+@font-face {
+  font-family: Wingdings;
+  panose-1: 5 0 0 0 0 0 0 0 0 0;
+}
+
+@font-face {
+  font-family: "Cambria Math";
+  panose-1: 2 4 5 3 5 4 6 3 2 4;
+}
+
+@font-face {
+  font-family: Tahoma;
+  panose-1: 2 11 6 4 3 5 4 4 2 4;
+}
+
+/* Style Definitions */
+p.MsoNormal,
+li.MsoNormal,
+div.MsoNormal {
+  margin-top: 0cm;
+  margin-right: 0cm;
+  margin-bottom: 9pt;
+  margin-left: 0cm;
+  line-height: 130%;
+  font-size: 10pt;
+  font-family: "Tahoma", sans-serif;
+  color: #7f7f7f;
+}
+
+h1 {
+  mso-style-link: "Heading 1 Char";
+  margin-top: 12pt;
+  margin-right: 0cm;
+  margin-bottom: 8pt;
+  margin-left: 0cm;
+  page-break-after: avoid;
+  border: none;
+  padding: 0cm;
+  font-size: 12pt;
+  font-family: "Tahoma", sans-serif;
+  color: #0e0b05;
+  text-transform: uppercase;
+}
+
+p.MsoFooter,
+li.MsoFooter,
+div.MsoFooter {
+  mso-style-link: "Footer Char";
+  margin-top: 12pt;
+  margin-right: 0cm;
+  margin-bottom: 0cm;
+  margin-left: 0cm;
+  font-size: 12pt;
+  font-family: "Tahoma", sans-serif;
+  color: #0e0b05;
+}
+
+p.MsoListBullet,
+li.MsoListBullet,
+div.MsoListBullet {
+  margin-top: 0cm;
+  margin-right: 0cm;
+  margin-bottom: 6pt;
+  margin-left: 10.8pt;
+  text-indent: -10.8pt;
+  line-height: 130%;
+  font-size: 10pt;
+  font-family: "Tahoma", sans-serif;
+  color: #7f7f7f;
+}
+
+a:link,
+span.MsoHyperlink {
+  color: #53c3c7;
+  text-decoration: underline;
+}
+
+span.Heading1Char {
+  mso-style-name: "Heading 1 Char";
+  mso-style-link: "Heading 1";
+  font-family: "Tahoma", sans-serif;
+  color: #0e0b05;
+  text-transform: uppercase;
+  font-weight: bold;
+}
+
+p.ContactInfo,
+li.ContactInfo,
+div.ContactInfo {
+  mso-style-name: "Contact Info";
+  margin-top: 0cm;
+  margin-right: 144pt;
+  margin-bottom: 27pt;
+  margin-left: 0cm;
+  line-height: 120%;
+  font-size: 12pt;
+  font-family: "Tahoma", sans-serif;
+  color: #7f7f7f;
+}
+
+p.ContactInfoCxSpFirst,
+li.ContactInfoCxSpFirst,
+div.ContactInfoCxSpFirst {
+  mso-style-name: "Contact InfoCxSpFirst";
+  margin-top: 0cm;
+  margin-right: 144pt;
+  margin-bottom: 0cm;
+  margin-left: 0cm;
+  line-height: 120%;
+  font-size: 12pt;
+  font-family: "Tahoma", sans-serif;
+  color: #7f7f7f;
+}
+
+p.ContactInfoCxSpMiddle,
+li.ContactInfoCxSpMiddle,
+div.ContactInfoCxSpMiddle {
+  mso-style-name: "Contact InfoCxSpMiddle";
+  margin-top: 0cm;
+  margin-right: 144pt;
+  margin-bottom: 0cm;
+  margin-left: 0cm;
+  line-height: 120%;
+  font-size: 12pt;
+  font-family: "Tahoma", sans-serif;
+  color: #7f7f7f;
+}
+
+p.ContactInfoCxSpLast,
+li.ContactInfoCxSpLast,
+div.ContactInfoCxSpLast {
+  mso-style-name: "Contact InfoCxSpLast";
+  margin-top: 0cm;
+  margin-right: 144pt;
+  margin-bottom: 27pt;
+  margin-left: 0cm;
+  line-height: 120%;
+  font-size: 12pt;
+  font-family: "Tahoma", sans-serif;
+  color: #7f7f7f;
+}
+
+span.FooterChar {
+  mso-style-name: "Footer Char";
+  mso-style-link: Footer;
+  color: #0e0b05;
+}
+
+p.Name,
+li.Name,
+div.Name {
+  mso-style-name: Name;
+  margin-top: 0cm;
+  margin-right: 0cm;
+  margin-bottom: 9pt;
+  margin-left: 0cm;
+  line-height: 80%;
+  font-size: 35pt;
+  font-family: "Tahoma", sans-serif;
+  color: #0e0b05;
+  text-transform: uppercase;
+  font-weight: bold;
+}
+
+p.NameCxSpFirst,
+li.NameCxSpFirst,
+div.NameCxSpFirst {
+  mso-style-name: NameCxSpFirst;
+  margin: 0cm;
+  line-height: 80%;
+  font-size: 35pt;
+  font-family: "Tahoma", sans-serif;
+  color: #0e0b05;
+  text-transform: uppercase;
+  font-weight: bold;
+}
+
+p.NameCxSpMiddle,
+li.NameCxSpMiddle,
+div.NameCxSpMiddle {
+  mso-style-name: NameCxSpMiddle;
+  margin: 0cm;
+  line-height: 80%;
+  font-size: 35pt;
+  font-family: "Tahoma", sans-serif;
+  color: #0e0b05;
+  text-transform: uppercase;
+  font-weight: bold;
+}
+
+p.NameCxSpLast,
+li.NameCxSpLast,
+div.NameCxSpLast {
+  mso-style-name: NameCxSpLast;
+  margin-top: 0cm;
+  margin-right: 0cm;
+  margin-bottom: 9pt;
+  margin-left: 0cm;
+  line-height: 80%;
+  font-size: 35pt;
+  font-family: "Tahoma", sans-serif;
+  color: #0e0b05;
+  text-transform: uppercase;
+  font-weight: bold;
+}
+
+p.Subheading,
+li.Subheading,
+div.Subheading {
+  mso-style-name: Subheading;
+  margin-top: 12pt;
+  margin-right: 0cm;
+  margin-bottom: 9pt;
+  margin-left: 0cm;
+  line-height: 130%;
+  font-size: 10pt;
+  font-family: "Tahoma", sans-serif;
+  color: #7f7f7f;
+}
+
+.MsoChpDefault {
+  font-size: 10pt;
+  font-family: "Tahoma", sans-serif;
+  color: #7f7f7f;
+}
+
+.MsoPapDefault {
+  margin-bottom: 9pt;
+  line-height: 130%;
+}
+
+/* Page Definitions */
+@page WordSection1 {
+  size: 612pt 792pt;
+  margin: 64.8pt 68.4pt 72pt 68.4pt;
+}
+
+div.WordSection1 {
+  page: WordSection1;
+}
+
+/* List Definitions */
+ol {
+  margin-bottom: 0cm;
+}
+
+ul {
+  margin-bottom: 0cm;
+}
+
+p.MsoNormal,
+li.MsoNormal,
+div.MsoNormal {
+  /* margin-top: 0cm; */
+  /* margin-right: 0cm; */
+  /* margin-bottom: 0.8rem; */
+  /* margin-left: 0cm; */
+  /* line-height: 130%; */
+  font-size: 1.2rem;
+  /* font-family: "Tahoma", sans-serif; */
+  /* color: #7F7F7F; */
+}
+
+p.MsoListBullet,
+li.MsoListBullet,
+div.MsoListBullet {
+  /* margin-top: 0cm; */
+  /* margin-right: 0cm; */
+  margin-bottom: 9pt;
+  /* margin-left: 10.8pt; */
+  /* text-indent: -10.8pt; */
+  /* line-height: 130%; */
+  font-size: 1.2rem;
+  font-family: "Tahoma", sans-serif;
+  color: #7f7f7f;
+}
+
+/* p.MsoListBullet:last-of-type,
+li.MsoListBullet:last-of-type,
+div.MsoListBullet:last-of-type {
+    padding-bottom: 2rem;
+} */
+
+/* p.MsoNormal:last-child,
+li.MsoNormal:last-child,
+div.MsoNormal:last-child {
+    padding-bottom: 1.2rem;
+} */
+
+p.Subheading,
+li.Subheading,
+div.Subheading {
+  /* margin-top: 12.0pt; */
+  /* margin-right: 0cm; */
+  /* margin-bottom: 9.0pt; */
+  /* margin-left: 0cm; */
+  /* line-height: 130%; */
+  font-size: 1.2rem;
+  font-family: "Tahoma", sans-serif;
+  color: #7f7f7f;
+}
+
+table {
+  width: 100%;
+}
+
+h1 {
+  font-size: 2rem !important;
+}
+
+/* any element before a div has 1 rem margin top */
+div::before {
+  margin-bottom: 1rem;
+}
+
+td,
+th,
+tr {
+  padding: 0 !important;
+}
+
+tr {
+  height: 1.6rem;
+}

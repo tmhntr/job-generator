@@ -1,0 +1,42 @@
+{
+    "projects": [
+        {
+            "title": "MyHealth",
+            "description": "Full stack personal health records management application. Vue front end, FastAPI (Python) backend, postgres database, deployed on linux server using Docker containers. Features: login with OAuth2.0, REST API, CI/CD."
+        },
+        {
+            "title": "PongML",
+            "description": "Recreate the classic game of pong, with an AI opponent. Game implemented using PyGame, AI agent implemented using OpenAI Gym. In a related project, PongApp, I implemented a live game server to play against an agent or another user on the web."
+        }
+    ],
+    "skills": {
+        "ci/cd": 0.4,
+        "docker": 0.6,
+        "fastapi": 0.2,
+        "git": 0.6,
+        "github": 0.6
+    },
+    "skills_relatedness": {
+        "ci/cd": {
+            "docker": 0.7,
+            "git": 0.8,
+            "github": 0.8
+        },
+        "docker": {
+            "ci/cd": 0.7
+        },
+        "fastapi": {
+            "python": 0.2,
+            "REST API": 0.8
+        },
+        "git": {
+            "ci/cd": 0.8,
+            "github": 0.8
+        },
+        "github": {
+            "ci/cd": 0.8,
+            "git": 0.8
+        }
+    }
+}
+

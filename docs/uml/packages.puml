@@ -1,0 +1,21 @@
+@startuml packages
+set namespaceSeparator none
+
+package "resume.chatgpt" as resume.chatgpt {
+}
+package "resume.coverletter" as resume.coverletter {
+}
+package "resume.data" as resume.data {
+}
+package "resume.main" as resume.main {
+}
+package "resume.posting" as resume.posting {
+}
+package "resume.resume" as resume.resume {
+}
+resume.coverletter --> resume.chatgpt
+resume.main --> resume.coverletter
+resume.main --> resume.data
+resume.main --> resume.posting
+resume.resume --> resume.data
+@enduml

@@ -1,0 +1,68 @@
+@startuml classes
+set namespaceSeparator none
+
+!theme cerulean-outline
+skinparam backgroundColor #FFFFFF
+
+class "Bot" as resume.chatgpt.Bot {
+  messages : list
+  get_response()
+  new_message(role, content)
+}
+class "CoverLetter" as resume.coverletter.CoverLetter {
+  bot
+  bot
+  cover_letter_str : str
+  cover_letter_str : str
+  posting_str : str
+  posting_str : str
+  resume_str : str
+  resume_str : str
+  get_str()
+  request_coverletter() -> str
+}
+class "DataFactory" as resume.data.DataFactory {
+  data_file : str
+  get_resume_data(posting: str) -> ResumeData
+  get_skills_data() -> SkillsData
+}
+class "Posting" as resume.posting.Posting {
+  text : value, str
+  compile()
+  get_str()
+  get_text_from_clipboard()
+}
+class "ProjectData" as resume.data.ProjectData {
+  description : str
+  title : str
+}
+class "Resume" as resume.resume.Resume {
+  css : str
+  data
+  html_template : str
+  skills_limit : int
+  soup : BeautifulSoup
+  compile_soup()
+  get_html()
+  get_text()
+  skill_string(skills: list[str])
+}
+class "ResumeData" as resume.data.ResumeData {
+  address : str
+  email : str
+  name : str
+  posting : str
+  projects : list[ProjectData]
+  skills : list
+  skills_data
+  website : str
+}
+class "SkillsData" as resume.data.SkillsData {
+  skills
+  get_skill_match_vector(matches: list[str]) -> list[int]
+  get_skill_relatededness_matrix()
+  get_skills(posting: str, limit: Union[int, None]) -> list[str]
+  get_text_matches(text: str, skills: list[str]) -> list[str]
+}
+resume.data.SkillsData --* resume.data.ResumeData : skills_data
+@enduml
