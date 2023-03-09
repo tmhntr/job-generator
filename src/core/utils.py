@@ -5,7 +5,7 @@ from src.core.posting import Posting
 
 from src.core.resume import Resume
 
-def output_to_files(resume: Resume = None, coverletter: CoverLetter = None, posting: Posting = None, resume_output_file: str = None, coverletter_output_file: str = None, posting_output_file: str = None):
+def output_to_files(name: str, resume: Resume = None, coverletter: CoverLetter = None, posting: Posting = None, output_dir: str = None):
     """Print the resume, cover letter, and posting to files.
     Each one is passed as an optional argument.
     
@@ -17,23 +17,25 @@ def output_to_files(resume: Resume = None, coverletter: CoverLetter = None, post
         coverletter_output_file (str, optional): The file to print the cover letter to. Defaults to output/CoverLetter.txt.
         posting_output_file (str, optional): The file to print the posting to. Defaults to output/Posting.txt.
         """
+    if not output_dir:
+        output_dir = f"{os.path.dirname(os.path.abspath(__file__))}/../../output/"
+    
+    if not os.path.exists(f"{output_dir}/{name}"):
+        os.makedirs(f"{output_dir}/{name}")
 
     # print the resume to a file
     if resume:
-        if not resume_output_file:
-            resume_output_file = f"{os.path.dirname(os.path.abspath(__file__))}/../output/Resume.pdf"
+        resume_output_file = f"{output_dir}/{name}/resume.pdf"
         pdfkit.from_string(resume.get_html(), resume_output_file)
 
     # print the cover letter to a file
     if coverletter:
-        if not coverletter_output_file:
-            coverletter_output_file = f"{os.path.dirname(os.path.abspath(__file__))}/../output/CoverLetter.txt"
+        coverletter_output_file = f"{output_dir}/{name}/coverletter.txt"
         with open(coverletter_output_file, 'w') as f:
             f.write(coverletter.get_str())
 
     # print the posting to a file
     if posting:
-        if not posting_output_file:
-            posting_output_file = f"{os.path.dirname(os.path.abspath(__file__))}/../output/Posting.txt"
+        posting_output_file = f"{output_dir}/{name}/posting.txt"
         with open(posting_output_file, 'w') as f:
-            f.write(posting.get_str())
+            f.write(posting.get_text())
