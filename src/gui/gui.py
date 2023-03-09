@@ -13,6 +13,7 @@ from src.gui.options import OptionsScreen
 from src.gui.home import HomeScreen
 
 from src.core.posting import Posting
+from src.gui.screen import Screen
 
 
 sg.set_options(font=('Arial Black', 14))
@@ -36,21 +37,6 @@ class ErrorPopup:
 
         window.close()
 
-class ScreenFactory:
-    def __init__(self, posting: Posting, data_factory: DataFactory):
-        self.posting = posting
-
-        self.data_factory = data_factory
-
-    def create(self, screen_name: str):
-        if screen_name == 'Home':
-            return HomeScreen()
-        elif screen_name == 'JobInfo':
-            return JobInfoScreen(self.posting)
-        elif screen_name == 'ApplicantInfo':
-            return ApplicantInfoScreen(self.data_factory.get_resume_data(self.posting.get_text()))
-        elif screen_name == 'Options':
-            return OptionsScreen()
 
 class App:
     screen_dq = deque(['Home', 'JobInfo', 'ApplicantInfo', 'Options'])
@@ -59,53 +45,44 @@ class App:
     def __init__(self, data_file: str, posting: Posting = None):
         self.posting = posting if posting else Posting()
 
-        self.data_factory = DataFactory(data_file=data_file)
-        self.screen_factory = ScreenFactory(self.posting, self.data_factory)
-
-        self.state = 'Home'
+        self.data_file =data_file
 
         self.window_title = 'Job (Application) Generator'
-        self._refresh()
-
-
-        self.state_event_map = {
-            'Home': self.handle_home_event,
-            'JobInfo': self.handle_job_info_event,
-            'ApplicantInfo': self.handle_applicant_info_event,
-            'Options': self.handle_options_event
-        }
-
+        self.set_screen(HomeScreen())
+        
     
-    def _refresh(self):
-        if self.window:
+    def set_screen(self, screen: Screen):
+        self.screen = screen
+        self.state = screen.screen_name
+        if hasattr(self, 'window') and self.window:
             self.window.close()
-        self.screen = self.screen_factory.create(self.state)
         self.window = sg.Window(self.window_title, self.screen.layout, size=(700, 500))
-    
-    def set_screen(self, screen_name: str):
-        self.state = screen_name
-        self._refresh()
 
 
     def handle_home_event(self, event, values):
         if event == '-NEXT-':
-            self.set_screen('JobInfo')
+            self.set_screen(JobInfoScreen(self.posting))
 
     def handle_job_info_event(self, event, values):
         if event == '-NEXT-':
             self.posting.set_name(values['-POSTINGNAME-'])
             self.posting.set_text(values['-POSTINGTEXT-'])
-            self.resume_data = self.data_factory.get_resume_data(self.posting.get_text())
-            self.set_screen('ApplicantInfo')
+            if not hasattr(self, 'resume_data'):
+                with open(self.data_file, 'r') as f:
+                    data = json.load(f)
+                    self.resume_data = ResumeData(**data['resume'])
+            self.set_screen(ApplicantInfoScreen(self.resume_data))
 
     def handle_applicant_info_event(self, event, values):
         if event == '-NEXT-':
+            if not hasattr(self, 'resume_data'):
+                self.resume_data = ResumeData()
             self.resume_data.name = values['-NAME-']
             self.resume_data.email = values['-EMAIL-']
             self.resume_data.address = values['-ADDRESS-']
             self.resume_data.website = values['-WEBSITE-']
             self.resume_data.skills = values['-SKILLS-'].split(', ')
-            self.set_screen('Options')
+            self.set_screen(OptionsScreen())
     
     def handle_options_event(self, event, values):
         if event == '-GENERATE-':
@@ -113,7 +90,7 @@ class App:
                 raise Exception('Resume data not set')
 
 
-            self.resume = Resume(data=self.resume_data, html_template_file=resume_template_html, css_file=resume_template_css)
+            self.resume = Resume(data_file=self.data_file, html_template_file=resume_template_html, css_file=resume_template_css, posting_text=self.posting.get_text())
             self.cover_letter = CoverLetter(resume_str=self.resume.get_text(), posting_str=self.posting.get_text())
             output_to_files(
                 name=self.posting.get_name(),
@@ -121,20 +98,27 @@ class App:
                 coverletter=self.cover_letter if values['-COVERLETTER-'] else None,
                 posting=self.posting if values['-POSTING-'] else None, 
                 output_dir=values['-OUTPUTDIR-'])
-            self.set_screen('Home')
+            self.set_screen(HomeScreen())
 
     def handle_event(self, event, values):
         self.state_event_map[self.state](event, values)
 
 
     def run(self):
+        state_event_map = {
+            'Home': self.handle_home_event,
+            'JobInfo': self.handle_job_info_event,
+            'ApplicantInfo': self.handle_applicant_info_event,
+            'Options': self.handle_options_event
+        }
+
         while True:
             event, values = self.window.read()
             if event == sg.WIN_CLOSED or event == 'Cancel':
                 break
 
             try:
-                self.state_event_map[self.state](event, values)
+                state_event_map[self.state](event, values)
                 self.screen.update(event, values, self.window)
             except Exception as e:
                 ErrorPopup(error_message=str(e))

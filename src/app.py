@@ -1,7 +1,7 @@
 #!/Applications/anaconda3/envs/resume/bin/python
 import os
 from argparse import ArgumentParser
-from cli import CLI
+from src.cli import CLI
 from src.gui.gui import App
 
 from src.core.utils import output_to_files
