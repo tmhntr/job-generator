@@ -14,6 +14,6 @@ class HomeScreen(Screen):
 
     def update(self, event, values, window):
         if event == 'Start':
-            window.write_event_value('-NEXT-', None)
+            window.write_event_value('-NEXT-', values)
         
 
