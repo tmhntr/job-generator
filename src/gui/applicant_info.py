@@ -1,12 +1,12 @@
 import PySimpleGUI as sg
-from src.core.data import ResumeData
+from src.core.resume import ResumeData
 
 from src.gui.screen import Screen
 
 # sg.theme('DarkAmber')   # Add a touch of color
 class ApplicantInfoScreen(Screen):
-    def __init__(self, resume_data: ResumeData, next=None):
-        super().__init__(next)
+    screen_name = 'ApplicantInfo'
+    def __init__(self, resume_data: ResumeData):
         self.resume_data = resume_data
         self.layout = [
             [sg.Text('Job (Application) Generator', font='Helvetica 24', justification='center', p=(12, 0))],

@@ -4,8 +4,8 @@ from src.gui.screen import Screen
 
 # sg.theme('DarkAmber')   # Add a touch of color
 class HomeScreen(Screen):
-    def __init__(self, next=None):
-        super().__init__(next)
+    screen_name = 'Home'
+    def __init__(self):
         self.layout = [
             [sg.Text('Job (Application) Generator', font='Helvetica 24', justification='center', p=(12, 0))],
             [sg.Text('Home')],

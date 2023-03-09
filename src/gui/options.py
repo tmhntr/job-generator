@@ -4,8 +4,8 @@ from src.gui.screen import Screen
 
 # sg.theme('DarkAmber')   # Add a touch of color
 class OptionsScreen(Screen):
-    def __init__(self, next=None):
-        super().__init__(next)
+    screen_name = 'Options'
+    def __init__(self):
 
         default_dir = "output/"
         self.layout = [

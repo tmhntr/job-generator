@@ -5,8 +5,8 @@ from src.gui.screen import Screen
 
 # sg.theme('DarkAmber')   # Add a touch of color
 class JobInfoScreen(Screen):
-    def __init__(self, posting: Posting, next=None):
-        super().__init__(next)
+    screen_name = 'JobInfo'
+    def __init__(self, posting: Posting):
         self.posting = posting
         self.layout = [
             [sg.Text('Job (Application) Generator', font='Helvetica 24', justification='center', p=(12, 0))],
@@ -20,7 +20,6 @@ class JobInfoScreen(Screen):
 
     def update(self, event, values, window):
         if event == 'Next':
-            window.write_event_value('-POSTING-', values)
-            window.write_event_value('-NEXT-', None)
+            window.write_event_value('-NEXT-', values)
         
 
