@@ -1,14 +1,25 @@
-import re
-import numpy as np
 import pyperclip as pc
 
 
 class Posting:
     def __init__(self):
+        self.name: str = ""
         self.text: str = ""
 
     def get_text_from_clipboard(self):
         return pc.paste()
+    
+    def set_text(self, text):
+        self.text = text
+
+    def get_text(self):
+        return self.text
+    
+    def get_name(self):
+        return self.name
+    
+    def set_name(self, name):
+        self.name = name
     
     def compile(self):
         pass

@@ -1,4 +1,4 @@
-from chatgpt import Bot
+from src.core.chatgpt import Bot
 
 prompt = """
 I'm about to send you a resume and then a job listing. 

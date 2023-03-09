@@ -1,7 +1,7 @@
 from bs4 import BeautifulSoup
 import re
 
-from data import ResumeData
+from src.core.data import ResumeData
 
 
 TEMPLATE_SKILLS = "TEMPLATE_SKILLS"
