@@ -1,7 +1,6 @@
-from core.coverletter import CoverLetter
-from core.data import DataFactory
-from core.posting import Posting
-from core.resume import Resume
+from src.core.coverletter import CoverLetter
+from src.core.posting import Posting
+from src.core.resume import Resume
 from src.constants import resume_template_html, resume_template_css
 
 

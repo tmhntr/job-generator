@@ -1,5 +1,5 @@
 import PySimpleGUI as sg
-from src.core.data import ResumeData
+from src.core.resume import ResumeData
 
 from src.gui.screen import Screen
 

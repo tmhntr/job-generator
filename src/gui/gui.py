@@ -1,9 +1,9 @@
+import json
 import PySimpleGUI as sg
 from collections import deque
 from src.core.coverletter import CoverLetter
 
-from src.core.data import DataFactory, ResumeData
-from src.core.resume import Resume
+from src.core.resume import Resume, ResumeData
 from src.constants import resume_template_html, resume_template_css
 from src.core.utils import output_to_files
 
