@@ -1,15 +1,11 @@
 #!/Applications/anaconda3/envs/resume/bin/python
 import os
 from argparse import ArgumentParser
+from cli import CLI
 from src.gui.gui import App
 
-from src.core.coverletter import CoverLetter
-from src.core.data import DataFactory
-from src.core.posting import Posting
-from src.core.resume import Resume
 from src.core.utils import output_to_files
 
-from src.constants import resume_template_html, resume_template_css
 
 def my_parse_args():
     parser = ArgumentParser()
@@ -29,28 +25,22 @@ def my_parse_args():
 
 
 def main():
-    args = my_parse_args()
     
     data_file = f"{os.path.dirname(os.path.abspath(__file__))}/../data/data.json"
  
+    args = my_parse_args()
+
     if args.no_gui:
-        posting = Posting()
-        factory = DataFactory(data_file=data_file)
-        name = posting.get_name_from_input()
-        posting.get_text_from_input()
-
-        resume_data = factory.get_resume_data(posting=posting.get_text())
-        resume = Resume(html_template_file=resume_template_html, data=resume_data, css_file=resume_template_css)
-
-        coverletter = CoverLetter(resume.get_text(), posting.get_text())
-
+        app = CLI(data_file=data_file)
     else:
         app = App(data_file=data_file)
-        app.run()
-        posting = app.posting
-        name = app.posting.get_name()
-        resume = app.resume
-        coverletter = app.coverletter
+        
+
+    app.run()
+    posting = app.posting
+    name = app.posting.get_name()
+    resume = app.resume
+    coverletter = app.coverletter
 
 
     if args.output:
