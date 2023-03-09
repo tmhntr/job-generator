@@ -3,7 +3,7 @@ requires = ["setuptools>=61.0"]
 build-backend = "setuptools.build_meta"
 [project]
 name = "job-generator"
-version = "1.0.1"
+version = "1.0.3"
 authors = [
   { name="Tim Hunter", email="thunte27@uwo.ca" },
 ]
